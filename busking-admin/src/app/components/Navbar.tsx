@@ -11,6 +11,7 @@ import {
     Option
 } from "@material-tailwind/react";
 import setIsBusking from "../firebase/setIsBusking";
+import { signOut } from "firebase/auth";
 
 export default function Example() {
     const [openNav, setOpenNav] = useState(false);
@@ -38,8 +39,18 @@ export default function Example() {
                 variant="small"
                 className="p-1 font-normal"
             >
-                <a href="links" className="flex items-center">
+                <a href="/./mysongs" className="flex items-center">
                     My Songs
+                </a>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                className="p-1 font-normal"
+                onClick={signOut}
+            >
+                <a href="/" className="flex items-center">
+                    Sign Out
                 </a>
             </Typography>
 
