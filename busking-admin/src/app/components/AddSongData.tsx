@@ -9,7 +9,7 @@ export default function AddSongData({ name, artist }: { name: string, artist: st
     console.log(name, artist)
 
     return (
-                <div> 
+                <div className="w-screen"> 
                     <div>
                         {`${name}`.concat(artist ? artist : "") }
                     </div>
