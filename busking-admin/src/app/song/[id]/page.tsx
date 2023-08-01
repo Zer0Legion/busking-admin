@@ -50,8 +50,8 @@ export default function Song(id: any) {
 
 
             <div className="flex container items-center gap-3 p-3">
-                <Input label="Name" color="white" value={songName} onChange={(r) => { setSongName(r.currentTarget.value) }}></Input>
-                <Input label="Artist" color="white" value={songArtist} onChange={(r) => { setSongArtist(r.currentTarget.value) }}></Input>
+                <Input label="Name" color="white" value={songName} onChange={(r) => { setSongName(r.currentTarget.value.trim().toLowerCase()) }}></Input>
+                <Input label="Artist" color="white" value={songArtist} onChange={(r) => { setSongArtist(r.currentTarget.value.trim().toLowerCase()) }}></Input>
             </div>
             <form className="flex container items-center gap-3 p-3">
                 <Select onChange={(e) => { setCapoNumber(e) }} size="md">
