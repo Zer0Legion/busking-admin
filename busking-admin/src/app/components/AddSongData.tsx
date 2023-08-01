@@ -6,7 +6,6 @@ export default function AddSongData({ name, artist }: { name: string, artist: st
 
     const [songScreenOpen, setSongScreenOpen] = useState(false);
 
-    console.log(name, artist)
 
     return (
                 <div className="w-screen"> 
