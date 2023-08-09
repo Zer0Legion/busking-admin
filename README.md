@@ -29,6 +29,11 @@ Deployed on Vercel.
 
 1. A simple authentication with Firebase Authentication which only allows valid emails to enter the page.
 2. Read song requests in real time sent in through the audience-facing web application, and delete them once I have finished performing the request.
-3. Toggle my busking status to prevent spamming of requests when I am not busking.
-4. Create and edit entries in my songbook to know which capo position and key I should be singing in, and whether or not I have learned the song.
-5. View my songbook.
+3. View the lyrics of a song.
+4. Toggle my busking status to prevent spamming of requests when I am not busking.
+5. Create and edit entries in my songbook to know which capo position and key I should be singing in, and whether or not I have learned the song.
+6. View my songbook.
+
+## Planned Features
+1. Collect data on how many times a particular song is requested or played by me.
+2. Improve the intuitiveness of the current UI.
