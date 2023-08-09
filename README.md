@@ -17,11 +17,11 @@ There are existing apps on App Marketplaces that perform similar functions to a 
 
 ## Project Description
 
-Frontend: NextJS with Typescript
+- Frontend: NextJS with Typescript
 
-Database: Google Firebase
+- Database: Google Firebase
 
-CSS: Material-Tailwind
+- CSS: Material-Tailwind
 
 Deployed on Vercel.
 
