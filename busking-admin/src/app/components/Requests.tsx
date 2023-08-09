@@ -33,11 +33,11 @@ export default function Requests() {
 
     const [data, setData] = useState<any>(null);
     const [dialogOpen, setDialogOpen] = useState(false);
-    const [songScreenData, setSongScreenData] = useState<any>([null, null]);
+    const [songScreenData, setSongScreenData] = useState<any>([null, null, null]);
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const openDrawer = (name: string, artist: string) => {
+    const openDrawer = (name: string, artist: string, remarks: string) => {
         setDrawerOpen(true);
-        setSongScreenData([name, artist]);
+        setSongScreenData([name, artist, remarks]);
     };
     const closeDrawer = () => setDrawerOpen(false);
 
@@ -59,6 +59,7 @@ export default function Requests() {
     // getSongRequests().then(d => setData(d)).catch(e => console.log(e));
     return (
         <div>
+            {/* {songScreenData[0]} { songScreenData[1] } {songScreenData[2]} */}
             {/* <Button onClick={() => getSongRequests().then(r => console.log(r))}>console log requests</Button> */}
             <List>
                 {data && data.map((d: SongRequest) => {
@@ -67,6 +68,8 @@ export default function Requests() {
                             className="text-white bg-blue-gray-400"
                             color="white"
                             key={d.id}
+                            onClick={() => {
+                            }}
                         >
                             <a href={`./song/${d.data.name}-${d.data.artist}`}>
                             <div className="w-full" onClick={() => {
@@ -77,12 +80,18 @@ export default function Requests() {
                             <ListItemSuffix>
                                 <div className="flex container gap-2 items-end">
                                     {d.data.remarks && (
-                                        <div onClick={handleDialogOpen}>Remarks</div>
+                                        <div onClick={() => {
+                                            handleDialogOpen();
+                                            setSongScreenData([d.data.name, d.data.artist, d.data.remarks]);
+                                            
+                                            // setData(d.data.remarks);
+                                            // console.log(d.data.remarks);
+                                        }}>Remarks</div>
                                     )}
                                     <a target="_blank" href={`https://www.google.com/search?q=${d.data.name}+${d.data.artist}+lyrics`}>Lyrics</a>
 
                                     <Dialog open={dialogOpen} handler={setDialogOpen}>
-                                        <DialogBody>{d.data.remarks}</DialogBody>
+                                        {songScreenData[2]}
                                     </Dialog>
 
                                     <DoneIcon id={d.id} onClick={(e) => {
