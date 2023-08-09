@@ -18,7 +18,9 @@ There are existing apps on App Marketplaces that perform similar functions to a 
 ## Project Description
 
 Frontend: NextJS with Typescript
+
 Database: Google Firebase
+
 CSS: Material-Tailwind
 
 Deployed on Vercel.
