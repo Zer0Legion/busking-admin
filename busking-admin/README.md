@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Admin Page for Busking Website
 
-## Getting Started
+## Introduction
+This is a webpage for myself to manage my busking sessions as efficiently as possible, mostly to handle song requests and collect data on songs.
 
-First, run the development server:
+A straightforward user interface is needed for myself to spend less time fiddling with the application, and more time singing and engaging with the audience.
+However, some intuition of the UI may be sacrificed for my personal preferences and tastes as this website is made purely for myself, and the main aim is to be as efficient and functional as possible.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The application is designed to be fast in order to read requests in real time, and be able to perform required operations with as little interaction with my phone as possible.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+There are existing apps on App Marketplaces that perform similar functions to a songbook. However, they pose significant problems:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. None of them act as a song request management platform, and I do not want to mess around with multiple apps when an audience is waiting for me to perform the next song.
+2. Most apps do not have my desired functionality, and those that do have an undesirable user interface.
+3. The small number of apps that seem to meet my requirement are paid or contain advertisements.
+4. Many apps are meant for use on tablets, but as a student I cannot afford a tablet solely for busking. My application is intended to be used on my phone.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project Description
 
-## Learn More
+Frontend: NextJS with Typescript
+Database: Google Firebase
+CSS: Material-Tailwind
 
-To learn more about Next.js, take a look at the following resources:
+Deployed on Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Existing Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. A simple authentication with Firebase Authentication which only allows valid emails to enter the page.
+2. Read song requests in real time sent in through the audience-facing web application, and delete them once I have finished performing the request.
+3. Toggle my busking status to prevent spamming of requests when I am not busking.
+4. Create an entry in my songbook to know which capo position and key I should be singing in, and whether or not I have learned the song.
+5. View my songbook.
