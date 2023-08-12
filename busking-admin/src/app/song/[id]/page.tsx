@@ -10,15 +10,15 @@ import addSongData from "@/app/firebase/song_data/addSongData";
 
 export default function Song(id: any) {
     const search: string = id.params.id;
-    const name: string = search.split("-")[0].replace("%20", " ");
-    const artist: string = search.split("-")[1].replace("%20", " ")
+    const name: string = search.split("-")[0].replaceAll("%20", " ").trim();
+    const artist: string = search.split("-")[1].replaceAll("%20", " ").trim();
 
     const [songName, setSongName] = useState<string>(name);
     const [songArtist, setSongArtist] = useState<string>(artist);
 
 
-    const [capoNumber, setCapoNumber] = useState<any>(-1);
-    const [capoCElseG, setCapoCElseG] = useState<boolean>(false);
+    const [capoNumber, setCapoNumber] = useState<any>(null);
+    const [capoCElseG, setCapoCElseG] = useState<any>(null);
     const toggleCElseG = () => setCapoCElseG(!capoCElseG);
     const [notes, setNotes] = useState<string>("");
     const [nPlayed, setNPlayed] = useState<number>(0);
@@ -36,13 +36,24 @@ export default function Song(id: any) {
 
     useEffect(() => {
         console.log("useEffect from song/id")
-        getSongData(name, artist).then(r => setSongData(r))
+        getSongData(name, artist).then(r => {setSongData(r); console.log(r)});
+        if (songData != null && songData.length > 0) {
+            console.log("changing data")
+            setCapoCElseG(songData[0].capoCElseG);
+            setCapoNumber(songData[0].capoNumber);
+
+        } else {
+            setCapoCElseG(false);
+            setCapoNumber(-1);
+            
+        }
     }, []);
 
 
-    return (
+    return (songData == null || capoCElseG == null || capoNumber == null) ? <div>Loading</div> : (
         <div>
             <Navbar />
+        
             <div className="flex container items-center justify-center mt-3">
                 <a href="/./mysongs" className="inline-block relative right-20"> back</a>
                 <Typography className="m-3 text-3xl relative right-2" >ADD SONG DATA</Typography>
@@ -78,12 +89,13 @@ export default function Song(id: any) {
             </div>
 
             <div className="flex container flex-col items-center gap-2 my-1">
-                <div>
+                {/* <div>
                     {`Played: ${nPlayed}`}
                 </div>
                 <div>
                     {`Rejected: ${nRejected}`}
-                </div>
+                </div> */}
+
                 <a href="/">
                     <Button className="mt-8" onClick={() => {
                         addSongData({
@@ -130,7 +142,12 @@ export default function Song(id: any) {
 
 
 
-            {/* <Button onClick={() => { getSongData(name, artist).then(r => console.log(r)) }}>get song data</Button> */}
+            {/* <Button onClick={() => {
+                console.log(songName);
+                console.log(songArtist);
+                getSongData(songName, songArtist).then(r => console.log(r))
+            }}>get song data</Button>
+            <Button onClick={() => console.log(songData)}>console.log songData</Button> */}
         </div>
     )
 

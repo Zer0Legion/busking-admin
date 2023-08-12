@@ -7,7 +7,6 @@ export default async function getSongData(name: string, artist: string) {
 
     const requestsRef = collection(db, "song_data");
     const q = query(requestsRef, where("name", "==", name), where("artist", "==", artist));
-    const songData: any[] = [];
 
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map(r => {
