@@ -59,45 +59,45 @@ export default function Requests() {
             <List>
                 {data && data.map((d: SongRequest) => {
                     return (
-                        <ListItem
-                            className="text-white bg-blue-gray-400"
-                            color="white"
-                            key={d.id}
-                            onClick={() => {
-                            }}
-                        >
-                            <a href={`./song/${d.data.name}-${d.data.artist}`}>
-                            <div className="w-full" onClick={() => {
-                                
-                            }}>{`${d.data.name}`.concat(d.data.artist === "" ? "" : `- ${d.data.artist}`)}
-                            </div>
-                            </a>
-                            <ListItemSuffix>
-                                <div className="flex container gap-2 items-end">
-                                    {d.data.remarks && (
-                                        <div onClick={() => {
-                                            handleDialogOpen();
-                                            setSongScreenData([d.data.name, d.data.artist, d.data.remarks]);
-                                            
-                                            // setData(d.data.remarks);
-                                            // console.log(d.data.remarks);
-                                        }}>Remarks</div>
-                                    )}
-                                    <a target="_blank" href={`https://www.google.com/search?q=${d.data.name}+${d.data.artist}+lyrics`}>Lyrics</a>
+                        <div>
+                            <ListItem
+                                className= {d.data.remarks ? "text-white bg-blue-gray-400" : "text-white bg-blue-gray-400"} 
+                                color="white"
+                                key={d.id}
+                                onClick={() => {
+                                }}
+                            >
+                                <a href={`./song/${d.data.name}-${d.data.artist}`}>
+                                    <div className="w-full" onClick={() => {
 
-                                    <Dialog open={dialogOpen} handler={setDialogOpen}>
-                                        {songScreenData[2]}
-                                    </Dialog>
+                                    }}>{`${d.data.name}`.concat(d.data.artist === "" ? "" : `- ${d.data.artist}`)}
+                                    </div>
+                                </a>
+                                <ListItemSuffix>
+                                    <div className="flex container gap-2 items-end">
 
-                                    <DoneIcon id={d.id} onClick={(e) => {
-                                        deleteSong(e.currentTarget.id);
-                                        // console.log("get song req after delete")
-                                        // getSongRequests().then(d => setData(d)).catch(e => console.log(e));
-                                    }} />
-                                </div>
-                            </ListItemSuffix>
+                                        <a target="_blank" href={`https://www.google.com/search?q=${d.data.name}+${d.data.artist}+lyrics`}>Lyrics</a>
 
-                        </ListItem>
+                                        <Dialog open={dialogOpen} handler={setDialogOpen}>
+                                            {songScreenData[2]}
+                                        </Dialog>
+
+                                        <DoneIcon id={d.id} onClick={(e) => {
+                                            deleteSong(e.currentTarget.id);
+                                            // console.log("get song req after delete")
+                                            // getSongRequests().then(d => setData(d)).catch(e => console.log(e));
+                                        }} />
+                                    </div>
+                                </ListItemSuffix>
+
+
+                            </ListItem>
+                            {d.data.remarks ? (
+                                <ListItem className="text-white bg-blue-gray-200 rounded-t-none" color="white">
+                                    {d.data.remarks}
+                                </ListItem>
+                            ) : <span></span>}
+                        </div>
                     )
                 })}
                 <div></div>
