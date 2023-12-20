@@ -61,7 +61,7 @@ export default function Requests() {
                     return (
                         <div>
                             <ListItem
-                                className= {d.data.remarks ? "text-white bg-blue-gray-400" : "text-white bg-blue-gray-400"} 
+                                className= {d.data.remarks ? "text-white bg-blue-gray-400 rounded-b-none" : "text-white bg-blue-gray-400"} 
                                 color="white"
                                 key={d.id}
                                 onClick={() => {
