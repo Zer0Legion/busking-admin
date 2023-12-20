@@ -96,7 +96,7 @@ export default function Requests() {
                                 <ListItem className="text-white bg-blue-gray-200 rounded-t-none" color="white" key={d.id + "remark"}>
                                     {d.data.remarks}
                                 </ListItem>
-                            ) : <span></span>}
+                            ) : <span key={d.id + "remark"}></span>}
                         </div>
                     )
                 })}
