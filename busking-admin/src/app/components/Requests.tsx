@@ -59,11 +59,10 @@ export default function Requests() {
             <List>
                 {data && data.map((d: SongRequest) => {
                     return (
-                        <div>
+                        <div key={d.id}>
                             <ListItem
                                 className= {d.data.remarks ? "text-white bg-blue-gray-400 rounded-b-none" : "text-white bg-blue-gray-400"} 
                                 color="white"
-                                key={d.id}
                                 onClick={() => {
                                 }}
                             >
@@ -93,10 +92,10 @@ export default function Requests() {
 
                             </ListItem>
                             {d.data.remarks ? (
-                                <ListItem className="text-white bg-blue-gray-200 rounded-t-none" color="white" key={d.id + "remark"}>
+                                <ListItem className="text-white bg-blue-gray-200 rounded-t-none" color="white">
                                     {d.data.remarks}
                                 </ListItem>
-                            ) : <span key={d.id + "remark"}></span>}
+                            ) : <span></span>}
                         </div>
                     )
                 })}
