@@ -11,6 +11,7 @@ import {
     Option
 } from "@material-tailwind/react";
 import setIsBusking from "../firebase/setIsBusking";
+import { auth } from "../firebase/auth/auth";
 import { signOut } from "firebase/auth";
 
 export default function Example() {
@@ -19,21 +20,10 @@ export default function Example() {
 
     useEffect(() => {
         window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
-
     }, []);
 
     const navList = (
         <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-
-            <Typography
-                as="li"
-                variant="small"
-                className="p-1 font-normal"
-            >
-                <a href="/" className="flex items-center">
-                    Song Requests
-                </a>
-            </Typography>
             <Typography
                 as="li"
                 variant="small"
@@ -47,20 +37,22 @@ export default function Example() {
                 as="li"
                 variant="small"
                 className="p-1 font-normal"
-                onClick={signOut}
             >
-                <a href="/" className="flex items-center">
+                <a className="flex items-center" onClick={() => {
+                    try {
+                        signOut(auth);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                }}>
                     Sign Out
                 </a>
             </Typography>
-
         </ul>
     );
 
     return (
         <Navbar
-            // className="mx-auto max-w-screen-xl py-4 px-6 lg:px-8 lg:py-4 bg-deep-orange-900 rounded-none outline-2 outline outline-brown-700"
-            // className="mx-auto max-w-screen-xl z-40 py-4 px-6 lg:px-8 lg:py-4 bg-brown-900 rounded-none outline-2 outline outline-brown-700"
             className={"mx-auto max-w-screen-xl py-4 px-6 lg:px-8 lg:py-4 rounded-none outline-2 outline outline-brown-700 bg-blue-gray-300"}
         >
 

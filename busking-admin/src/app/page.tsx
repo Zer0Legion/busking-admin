@@ -7,7 +7,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 import SignedIn from './components/SignedIn';
 import { auth, signIn } from './firebase/auth/auth';
-import { signOut } from 'firebase/auth';
 import setIsBusking from './firebase/setIsBusking';
 import Navbar from './components/Navbar';
 
@@ -15,13 +14,8 @@ export default function Home() {
 
   const [user] = useAuthState(auth);
 
-  return user && (user.email == "lengkhai@gmail.com" || user.email == "jancycheeqianshi@gmail.com") ? (
+  return user ? (
     <div>
-      <Button onClick={() => {
-        signOut(auth);
-        setIsBusking(false);
-      }}
-      >sign out</Button>
       <Navbar></Navbar>
       <SignedIn />
     </div>
@@ -29,7 +23,7 @@ export default function Home() {
     <div className="flex container justify-center align-cennter items-center w-full h-screen">
       <Button onClick={async () => {
         await signIn().then(r => {
-          if (r && (r.user.email == "lengkhai@gmail.com" || r.user.email == "jancycheeqianshi@gmail.com")) setIsBusking(true);
+          if (r) setIsBusking(true);
         });
       }}
       >sign in</Button>

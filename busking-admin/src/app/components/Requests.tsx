@@ -10,10 +10,6 @@ import addSongData from "../firebase/song_data/addSongData";
 import CloseIcon from '@mui/icons-material/Close';
 import React from "react";
 
-// Audience submit 1 song: 3 reads
-// go on admin page after add song- 497 - 514 = 17 reads, 520
-// Refresh admin page 1 read
-// delete song 522/19/15 526/20/16
 
 export default function Requests() {
     async function getRequests() {

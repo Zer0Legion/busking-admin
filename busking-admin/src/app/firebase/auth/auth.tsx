@@ -6,7 +6,7 @@ export const auth = getAuth(app);
 
 export const signIn = async () => {
     const user = await signInWithPopup(auth, provider);
-    if (user.user.email == "lengkhai@gmail.com") {
+    if (user.user.email != null) {
         return user;
     }
     return null;
