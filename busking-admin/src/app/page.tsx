@@ -4,11 +4,10 @@ import Image from 'next/image'
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-
-import SignedIn from './components/SignedIn';
 import { auth, signIn } from './firebase/auth/auth';
 import setIsBusking from './firebase/setIsBusking';
 import Navbar from './components/Navbar';
+import Requests from './components/Requests';
 
 export default function Home() {
 
@@ -17,7 +16,7 @@ export default function Home() {
   return user ? (
     <div>
       <Navbar></Navbar>
-      <SignedIn />
+      <Requests />
     </div>
   ) : (
     <div className="flex container justify-center align-cennter items-center w-full h-screen">

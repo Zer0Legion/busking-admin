@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar";
 import { useState, useEffect } from "react";
 import getSongData from "@/app/firebase/song_data/getSongData";
 import addSongData from "@/app/firebase/song_data/addSongData";
+import Loading from "@/app/components/Loading";
 
 export default function Song(id: any) {
     const search: string = id.params.id;
@@ -50,7 +51,7 @@ export default function Song(id: any) {
     }, []);
 
 
-    return (songData == null || capoCElseG == null || capoNumber == null) ? <div>Loading</div> : (
+    return (songData == null || capoCElseG == null || capoNumber == null) ? <Loading /> : (
         <div>
             <Navbar />
         

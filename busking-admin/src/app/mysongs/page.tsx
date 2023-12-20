@@ -3,10 +3,11 @@
 import Navbar from "../components/Navbar";
 import { auth } from "../firebase/auth/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Button, List, ListItem, Spinner, Typography } from "@material-tailwind/react";
+import { Button, List, ListItem, Typography } from "@material-tailwind/react";
 import getSongData from "../firebase/song_data/getAllSongData";
 import { useEffect, useState } from "react";
 import SongData from "../interfaces/SongData";
+import Loading from "../components/Loading";
 
 export default function MySongs() {
 
@@ -48,5 +49,5 @@ export default function MySongs() {
             </List> : <div />}
 
         </div>
-    ) : (<div className="h-screen w-screen flex container justify-center items-center"><Spinner /></div>)
+    ) : (<div className="h-screen w-screen flex container justify-center items-center"><Loading /></div>)
 }

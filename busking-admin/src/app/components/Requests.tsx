@@ -6,8 +6,6 @@ import deleteSong from "../firebase/requests/deleteSong";
 import { SongRequest } from "../interfaces/SongRequest";
 import { collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase/config";
-import addSongData from "../firebase/song_data/addSongData";
-import CloseIcon from '@mui/icons-material/Close';
 import React from "react";
 
 
@@ -24,17 +22,7 @@ export default function Requests() {
         return querySnapshot.docs.map(e => { return { data: e.data(), id: e.id } })
     }
 
-
-
     const [data, setData] = useState<any>(null);
-    const [dialogOpen, setDialogOpen] = useState(false);
-    const [songScreenData, setSongScreenData] = useState<any>([null, null, null]);
-    const [drawerOpen, setDrawerOpen] = useState(false);
-    const openDrawer = (name: string, artist: string, remarks: string) => {
-        setDrawerOpen(true);
-        setSongScreenData([name, artist, remarks]);
-    };
-    const closeDrawer = () => setDrawerOpen(false);
 
     const [capoNumber, setCapoNumber] = useState<number>(-1);
     const [capoCElseG, setCapoCElseG] = useState<boolean>(false);
@@ -43,15 +31,12 @@ export default function Requests() {
     const [nRejected, setNRejected] = useState<number>(0);
     const [learned, setLearned] = useState<boolean>(false);
 
-    const handleDialogOpen = () => setDialogOpen(!dialogOpen);
 
     useEffect(() => {
         console.log("useeffect");
         getRequests().then(d => setData(d)).catch(e => console.log(e));
     }, [])
 
-
-    // getSongRequests().then(d => setData(d)).catch(e => console.log(e));
     return (
         <div>
             {/* {songScreenData[0]} { songScreenData[1] } {songScreenData[2]} */}
@@ -76,10 +61,6 @@ export default function Requests() {
                                     <div className="flex container gap-2 items-end">
 
                                         <a target="_blank" href={`https://www.google.com/search?q=${d.data.name}+${d.data.artist}+lyrics`}>Lyrics</a>
-
-                                        <Dialog open={dialogOpen} handler={setDialogOpen}>
-                                            {songScreenData[2]}
-                                        </Dialog>
 
                                         <DoneIcon id={d.id} onClick={(e) => {
                                             deleteSong(e.currentTarget.id);

@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import {
     Navbar,
-    MobileNav,
     Typography,
-    Button,
     IconButton,
     Collapse,
-    Select,
     Switch,
-    Option
 } from "@material-tailwind/react";
 import setIsBusking from "../firebase/setIsBusking";
 import { auth } from "../firebase/auth/auth";
