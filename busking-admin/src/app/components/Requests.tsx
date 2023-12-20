@@ -93,7 +93,7 @@ export default function Requests() {
 
                             </ListItem>
                             {d.data.remarks ? (
-                                <ListItem className="text-white bg-blue-gray-200 rounded-t-none" color="white" key={d.data.remarks}>
+                                <ListItem className="text-white bg-blue-gray-200 rounded-t-none" color="white" key={d.id + "remark"}>
                                     {d.data.remarks}
                                 </ListItem>
                             ) : <span></span>}
