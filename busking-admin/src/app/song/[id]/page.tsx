@@ -44,19 +44,26 @@ export default function Song(id: any) {
                 setLearned(r[0].learned);
                 setNotes(r[0].notes);
                 setSongArtist(r[0].artist);
+            } else if (r.length > 1) {
+                let match = null;
+                for (let i = 0; i < r.length; i++) {
+                    let currArtist = r[i].artist;
+                    if (currArtist == songArtist) {
+                        match = i;
+                    }
+                }
+                if (match == null) {
+                    match = 0;
+                }
+                setCapoNumber(r[match].capoNumber);
+                setCapoCElseG(r[match].capoCElseG);
+                setLearned(r[match].learned);
+                setNotes(r[match].notes);
+                setSongArtist(r[match].artist);
             }
 
         });
-        // if (songData != null && songData.length > 0) {
-        //     console.log("changing data")
-        //     setCapoCElseG(songData[0].capoCElseG);
-        //     setCapoNumber(songData[0].capoNumber);
-
-        // } else {
-        //     setCapoCElseG(false);
-        //     setCapoNumber(-1);
-            
-        // }
+      
     }, []);
 
 
