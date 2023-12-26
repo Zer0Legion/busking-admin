@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs, orderBy, query, where, onSnapshot } from "firebase/firestore";
-import { db } from "../../../../config";
+import { db } from "../config";
 
 export default async function getSongRequests() {
-    console.log("getSongRequests");
     const requestsRef = collection(db, "requests");
     const q = query(requestsRef, orderBy("created"));
     const songs: any[] = [];

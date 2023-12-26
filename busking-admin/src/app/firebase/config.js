@@ -1,20 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { env } from "process";
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: env.API_KEY,
-  authDomain: env.AUTH_DOMAIN,
-  projectId: env.PROJECT_ID,
-  storageBucket: env.STORAGE_BUCKET,
-  messagingSenderId: env.MESSAGING_SENDER_ID,
-  appId: env.APP_ID,
-  databaseURL: env.DATABASE_URL
+  apiKey: "AIzaSyCoTN3ryDG-v_oAitSk4y83yL-TW5ouo3E",
+  authDomain: "busking-28de5.firebaseapp.com",
+  projectId: "busking-28de5",
+  storageBucket: "busking-28de5.appspot.com",
+  messagingSenderId: "835139044132",
+  appId: "1:835139044132:web:f6a08781f5ef931f9ba9b1",
+  databaseURL: "https://busking-28de5-default-rtdb.asia-southeast1.firebasedatabase.app/"
 };
 
 // Initialize Firebase

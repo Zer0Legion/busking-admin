@@ -16,7 +16,6 @@ export default function MySongs() {
     const [songData, setSongData] = useState<any>([]);
 
     useEffect(() => {
-        console.log("useEffect: my songs");
         getAllSongData().then(r => setSongData(r));
     }, [])
 

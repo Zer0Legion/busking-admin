@@ -36,10 +36,8 @@ export default function Song(id: any) {
     const [user] = useAuthState(auth);
 
     useEffect(() => {
-        console.log("useEffect from song/id")
         getSongData(name).then(r => {
             setSongData(r); 
-            console.log(r);
             if (r.length == 1) {
                 setCapoNumber(r[0].capoNumber);
                 setCapoCElseG(r[0].capoCElseG);

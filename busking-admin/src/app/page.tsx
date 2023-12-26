@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import Requests from './components/Requests';
 
 export default function Home() {
+  
 
   const [user] = useAuthState(auth);
 

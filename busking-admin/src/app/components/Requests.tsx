@@ -5,13 +5,12 @@ import DoneIcon from '@mui/icons-material/Done';
 import deleteSong from "../firebase/requests/deleteSong";
 import { SongRequest } from "../interfaces/SongRequest";
 import { collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db } from "../../../config";
+import { db } from "../firebase/config";
 import React from "react";
 
 
 export default function Requests() {
     async function getRequests() {
-        console.log("getRequests");
         const requestsRef = collection(db, "requests");
         const q = query(requestsRef, orderBy("created"));
 
@@ -33,7 +32,6 @@ export default function Requests() {
 
 
     useEffect(() => {
-        console.log("useeffect");
         getRequests().then(d => setData(d)).catch(e => console.log(e));
     }, [])
 
