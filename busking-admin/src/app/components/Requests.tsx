@@ -5,7 +5,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import deleteSong from "../firebase/requests/deleteSong";
 import { SongRequest } from "../interfaces/SongRequest";
 import { collection, getDocs, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase/config";
+import { db } from "../../../config";
 import React from "react";
 
 

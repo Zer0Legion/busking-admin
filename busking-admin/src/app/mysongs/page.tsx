@@ -4,10 +4,11 @@ import Navbar from "../components/Navbar";
 import { auth } from "../firebase/auth/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, List, ListItem, Typography } from "@material-tailwind/react";
-import getSongData from "../firebase/song_data/getAllSongData";
+import getAllSongData from "../firebase/song_data/getAllSongData";
 import { useEffect, useState } from "react";
 import SongData from "../interfaces/SongData";
 import Loading from "../components/Loading";
+import getSongData from "../firebase/song_data/getSongData";
 
 export default function MySongs() {
 
@@ -16,10 +17,10 @@ export default function MySongs() {
 
     useEffect(() => {
         console.log("useEffect: my songs");
-        getSongData().then(r => setSongData(r));
+        getAllSongData().then(r => setSongData(r));
     }, [])
 
-    return user && (user.email == "lengkhai@gmail.com" || user.email == "jancycheeqianshi@gmail.com") ? (
+    return user ? (
         <div>
             <Navbar></Navbar>
 
@@ -34,20 +35,23 @@ export default function MySongs() {
 
             {songData ? <List>
                 {songData.map((r: SongData) => (
-                    <ListItem
-                        className="text-white bg-blue-gray-400"
-                        color="white"
-                        key={`${r.name}-${r.artist}`}
-                    >
-                        <a className="" href={`./song/${r.name}-${r.artist}`}>
-                            <div key={r.name.concat(r.artist)}>
-                                {r.name} {r.artist ? `-${r.artist}` : ""}
-                            </div>
-                        </a>
-                    </ListItem>
+                    <div key={`${r.name}-${r.artist}`}>
+                        <ListItem
+                            className="text-white bg-blue-gray-400"
+                            color="white"
+                        >
+                            <a className="" href={`./song/${r.name}-${r.artist}`}>
+                                <div key={r.name.concat(r.artist)}>
+                                    {r.name} {r.artist ? `-${r.artist}` : ""}
+                                </div>
+                            </a>
+                            {/* <Button onClick={() => getSongData(r.name).then(r => console.log(r))}>fetch song data</Button> */}
+                        </ListItem>
+                    </div>
+
                 ))}
             </List> : <div />}
 
         </div>
-    ) : (<div className="h-screen w-screen flex container justify-center items-center"><Loading /></div>)
+    ) : <Loading />
 }

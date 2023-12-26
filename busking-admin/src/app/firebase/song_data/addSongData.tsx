@@ -1,10 +1,9 @@
 // import { randomUUID } from "crypto";
 import SongData from "../../interfaces/SongData"
-import { addDoc, collection, doc, setDoc, FieldValue, serverTimestamp, } from "firebase/firestore";
-import { db } from "../config";
+import { addDoc, collection, doc, setDoc, FieldValue, serverTimestamp } from "firebase/firestore";
+import { db } from "../../../../config";
 
 export default async function addSongData(data: SongData) {
-  console.log("addSongData");
   await setDoc(doc(db, "song_data", data.name.concat(data.artist)), data);
 }
 

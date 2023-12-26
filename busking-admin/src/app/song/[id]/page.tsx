@@ -37,21 +37,32 @@ export default function Song(id: any) {
 
     useEffect(() => {
         console.log("useEffect from song/id")
-        getSongData(name, artist).then(r => {setSongData(r); console.log(r)});
-        if (songData != null && songData.length > 0) {
-            console.log("changing data")
-            setCapoCElseG(songData[0].capoCElseG);
-            setCapoNumber(songData[0].capoNumber);
+        getSongData(name).then(r => {
+            setSongData(r); 
+            console.log(r);
+            if (r.length == 1) {
+                setCapoNumber(r[0].capoNumber);
+                setCapoCElseG(r[0].capoCElseG);
+                setLearned(r[0].learned);
+                setNotes(r[0].notes);
+                setSongArtist(r[0].artist);
+            }
 
-        } else {
-            setCapoCElseG(false);
-            setCapoNumber(-1);
+        });
+        // if (songData != null && songData.length > 0) {
+        //     console.log("changing data")
+        //     setCapoCElseG(songData[0].capoCElseG);
+        //     setCapoNumber(songData[0].capoNumber);
+
+        // } else {
+        //     setCapoCElseG(false);
+        //     setCapoNumber(-1);
             
-        }
+        // }
     }, []);
 
 
-    return (songData == null || capoCElseG == null || capoNumber == null) ? <Loading /> : (
+    return (songData == null) ? <Loading /> : (
         <div>
             <Navbar />
         
@@ -79,7 +90,7 @@ export default function Song(id: any) {
                 </Select>
                 <Switch onClick={toggleCElseG} label="C?"></Switch>
                 <Typography className={"text-2xl".concat(capoNumber == "-1" ? " text-red-500" : "")}>
-                    {`${capoNumber}${capoCElseG ? "C" : "G"}`}
+                    {`${capoNumber ? capoNumber : "_"}${capoCElseG ? "C" : "G"}`}
                 </Typography>
             </form>
             <form className="flex container items-center gap-3 px-3">
@@ -111,7 +122,7 @@ export default function Song(id: any) {
                         })
                     }}>add- Back to Home Page</Button>
                 </a>
-                <a href="/">
+                <a href="/./mysongs">
                     <Button className="" onClick={() => {
                         addSongData({
                             name: songName,
